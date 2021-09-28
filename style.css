@@ -1,0 +1,47 @@
+.container {
+    display: grid;
+    border: thin solid black;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 500px 160px 50px;
+  } 
+
+#results {
+    grid-row: 1 / 3;
+    width: 100%;
+    border: solid royalblue 5px;
+    
+}
+#image1 {
+    align-self: start;
+    width: 100%;
+    height: 50%;
+    border: thick solid plum;
+}
+#image2 {
+    align-self: start;
+    width: 100%;
+    height: 50%;
+    border: thick dashed blueviolet;
+
+}
+#image3 {
+    align-self: start;
+    width: 100%;
+    height: 50%;
+    border: solid green 5px;
+    
+
+}
+#text {
+    grid-row: 2/2;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    width: 100%;
+    height: 100%;
+    border: thick solid pink;
+}
+#footer {
+    border: solid orangered;
+    align-content: center;
+    grid-column: 1/5;
+}
