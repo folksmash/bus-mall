@@ -15,12 +15,14 @@
     align-self: start;
     width: 100%;
     height: 50%;
+    object-fit: cover;
     border: thick solid plum;
 }
 #image2 {
     align-self: start;
     width: 100%;
     height: 50%;
+    object-fit: cover;
     border: thick dashed blueviolet;
 
 }
@@ -28,6 +30,7 @@
     align-self: start;
     width: 100%;
     height: 50%;
+    object-fit: cover;
     border: solid green 5px;
     
 
