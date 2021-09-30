@@ -10,6 +10,11 @@
 
 const allImages = [];
 let totalClick = 0;
+// variable to push data into chart
+// need vote totals and which products
+// find vote total loop
+// find product loop
+const chartData = [];
 
 function Image(url, name) {
     this.name = name;
@@ -81,6 +86,7 @@ function clickCounter(event){
         centerImageEl.removeEventListener('click', clickCounter)
         rightImageEL.removeEventListener('click', clickCounter)
         renderResults();
+        renderChart()
     }
 }
 
@@ -93,6 +99,60 @@ function renderResults(){
     
 }
 
+function renderChart () {
+    let chartEl = document.getElementById('myChart');
+    chartEl.innerHTML = '';
+  
+    let ctx = chartEl.getContext('2d');
+    const label = [];
+    const clickData = [];
+    const showData = [];
+    for (let i = 0; i < allImages.length; i++){
+      label.push(allImages[i].name);
+      clickData.push(allImages[i].clicks);
+      showData.push(allImages[i].timesShown);
+    }
+    
+    let finalchart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: label,
+        datasets:[{
+          label: 'Number of Clicks',
+          data: clickData,
+          backgroundColor: 'rgba(130, 0, 67, 0.8)',
+          borderColor: 'rgba(245, 40, 145, 0.8)',
+          borderWidth: 1
+        }, {
+          label:'Number of Times Shown',
+          data: showData,
+          backgroundColor: 'rgba(147, 174, 139, 0.8)',
+          borderColor: 'rgba(47, 192, 2, 0.8)',
+          borderWidth: 3
+        }],
+      },
+      options: {
+        plugins: {title: {
+          display: true,
+          text: 'Results',
+          padding: {
+            top: 5,
+            bottom: 15,
+          },
+          font: {
+            size: 20,
+          }
+        }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 10,
+          }
+        },
+      }
+    });
+} 
 //need to set a limit of rounds at 25
 //need to track what is clicked
 //need to store click info
@@ -101,6 +161,8 @@ function renderResults(){
 leftImageEL.addEventListener('click', clickCounter);
 centerImageEl.addEventListener('click', clickCounter)
 rightImageEL.addEventListener('click', clickCounter)
+
+
 
 // how to render images
 new Image('bag.jpg', 'bag');
