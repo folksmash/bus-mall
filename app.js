@@ -87,6 +87,8 @@ function clickCounter(event){
         rightImageEL.removeEventListener('click', clickCounter)
         renderResults();
         renderChart()
+                let dataString = JSON.stringify(allImages);
+                localStorage.setItem('container', dataString);
     }
 }
 
@@ -164,6 +166,14 @@ rightImageEL.addEventListener('click', clickCounter)
 
 
 
+let retrievedProducts = localStorage.getItem("");
+
+if (retrievedProducts) {
+  let parsedData = JSON.parse(retrievedProducts);
+  allImages = parsedData;
+
+} else {
+
 // how to render images
 new Image('bag.jpg', 'bag');
 new Image('banana.jpg', 'banana');
@@ -184,7 +194,7 @@ new Image('tauntaun.jpg', 'tauntaun');
 new Image('unicorn.jpg', 'unicorn');
 new Image('water-can.jpg', 'water-can');
 new Image('wine-glass.jpg', 'wine-glass');
-
+}
 renderImages()
 
 console.log(allImages);
